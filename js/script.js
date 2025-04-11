@@ -41,139 +41,110 @@ botao_on.addEventListener('click', () => {
         document.documentElement.style.setProperty('--bx1', 'rgb(78, 78, 78)');
         document.documentElement.style.setProperty('--bx2', 'rgb(78, 78, 78)');
         numbox.textContent = 'Desligado';
+        calcular = '';
     }
 });
+
 botao_number0.addEventListener("click", () => {
-    if(ligado){
+    if (ligado) {
         numbox.textContent += '0';
         calcular += '0';
     }
 });
 
 botao_point.addEventListener("click", () => {
-    if(ligado){
+    if (ligado && !calcular.includes('.')) {
         numbox.textContent += '.';
         calcular += '.';
     }
 });
 
-botao_number1.addEventListener("click", () => {
-    if(ligado){
-        numbox.textContent += '1';
-        calcular += '1';
+const handleNumberClick = (num) => {
+    if (ligado) {
+        numbox.textContent += num;
+        calcular += num;
     }
-});
+};
 
-botao_number2.addEventListener("click", () => {
-    if(ligado){
-        numbox.textContent += '2';
-        calcular += '2';
-    }
-});
-
-botao_number3.addEventListener("click", () => {
-    if(ligado){
-        numbox.textContent += '3';
-        calcular += '3';
-    }
-});
-
-botao_number4.addEventListener("click", () => {
-    if(ligado){
-        numbox.textContent += '4';
-        calcular += '4';
-    }
-});
-
-botao_number5.addEventListener("click", () => {
-    if(ligado){
-        numbox.textContent += '5';
-        calcular += '5';
-    }
-});
-
-botao_number6.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += '6';
-    calcular += '6';
-    }
-});
-
-botao_number7.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += '7';
-    calcular += '7';
-    }
-});
-
-botao_number8.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += '8';
-    calcular += '8';
-    }
-});
-
-botao_number9.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += '9';
-    calcular += '9';
-    }
+[botao_number1, botao_number2, botao_number3, botao_number4, botao_number5, botao_number6, botao_number7, botao_number8, botao_number9].forEach((botao, index) => {
+    botao.addEventListener("click", () => handleNumberClick(index + 1));
 });
 
 botao_soma.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += ' + ';
-    calcular += "+";
+    if (ligado) {
+        numbox.textContent += ' + ';
+        calcular += "+";
     }
 });
-botao_subtracao.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += ' - ';
-    calcular += "-";
-    }
-});
-botao_divisao.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += ' ÷ ';
-    calcular += "/";
-    }
-});
-botao_multiplicacao.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += ' X ';
-    calcular += '*';
-    }
-});
-botao_porcentagem.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += ' % ';
-    calcular += "%";
-    }
-});
-botao_raiz.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent += ' √ ';
-    calcular += Math. sqrt();
-    }
-});
-botao_ce.addEventListener("click", () => {
-    if(ligado){
-    numbox.textContent = '';
-    calcular = 0
-    }
-});
-botao_resultado.addEventListener("click", () =>{
-    if(ligado){
-    const resultado = calcularExpressao(calcular);
-    numbox.textContent = resultado;
-    calcular = resultado.toString()
-    }
-})
 
-function calcularExpressao(){
+botao_subtracao.addEventListener("click", () => {
+    if (ligado) {
+        numbox.textContent += ' - ';
+        calcular += "-";
+    }
+});
+
+botao_divisao.addEventListener("click", () => {
+    if (ligado) {
+        numbox.textContent += ' ÷ ';
+        calcular += "/";
+    }
+});
+
+botao_multiplicacao.addEventListener("click", () => {
+    if (ligado) {
+        numbox.textContent += ' X ';
+        calcular += '*';
+    }
+});
+
+botao_porcentagem.addEventListener("click", () => {
+    if (ligado) {
+        numbox.textContent += ' % ';
+        calcular += "%";
+    }
+});
+
+botao_raiz.addEventListener("click", () => {
+    if (ligado) {
+        const resultadoRaiz = Math.sqrt(parseFloat(calcular) || 0);
+        numbox.textContent = '√(' + calcular + ') = ' + resultadoRaiz;
+        calcular = resultadoRaiz.toString();
+    }
+});
+
+botao_ce.addEventListener("click", () => {
+    if (ligado) {
+        numbox.textContent = '';
+        calcular = '';
+    }
+});
+
+botao_resultado.addEventListener("click", () => {
+    if (ligado) {
+        const resultado = calcularExpressao(calcular);
+        adicionarAoHistorico(`${numbox.textContent} = ${resultado}`);
+        numbox.textContent = resultado;
+        calcular = resultado.toString();
+    }
+});
+
+
+function calcularExpressao(expressao) {
     try {
-        return eval(calcular);
+        return eval(expressao);
     } catch (error) {
         return "Erro na expressão";
     }
+}
+function adicionarAoHistorico(entrada) {
+    const lista = document.getElementById("historico");
+    const item = document.createElement("li");
+    item.textContent = entrada;
+    lista.appendChild(item);
+}
+
+function limparHistorico() {
+    const lista = document.getElementById("historico");
+    lista.innerHTML = "";
 }

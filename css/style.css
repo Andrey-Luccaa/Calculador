@@ -1,53 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&family=Poppins:wght@200;300;400;500&display=swap');
-*{
-    margin: 0px;
-    padding: 0px;
+
+* {
+    margin: 0;
+    padding: 0;
     font-family: 'Inter', sans-serif;
 }
+
 textarea:focus, input:focus {
     outline: 0;
 }
-:root{
+
+:root {
     --cor1: rgb(104, 2, 189);
-    --bx1: rgb(60, 1, 109);
     --cor2: rgb(148, 74, 209);
+    --bx1: rgb(60, 1, 109);
     --bx2: rgb(81, 39, 116);
-    
+    --cinza: rgb(66, 66, 66);
+    --preto-inset: rgb(0, 0, 0);
 }
-body{
+
+/* Estrutura */
+body {
     background: black;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.box1{
+
+.box1 {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin: 30px;
     width: 100%;
 }
-.calculadora{
+
+.calculadora {
     background-color: rgb(43, 43, 43);
     width: 40%;
     margin-top: 20px;
     border-radius: 15px;
-    display: flex;  
-    justify-content: center;
-    align-items: center;
+    display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 10px 5px var(--cor1);
+    align-items: center;
+    box-shadow: 0 0 10px 5px var(--cor1);
     border: solid var(--cor1) 10px;
 }
-.linha0{
+
+.linha0, .linha1, .linha2, .linha3, .linha4, .linha5, .linha6 {
     display: flex;
-    align-items: center;
-    margin: 20px;
     width: 90%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    color: white;
 }
-.numbox{
-    margin: 20px;
+
+.linha6 {
+    margin-bottom: 25px;
+    width: 82%;
+    justify-content: space-between;
+}
+
+/* Display */
+.numbox {
     width: 90%;
     height: 40px;
     color: white;
@@ -57,477 +74,202 @@ body{
     border-radius: 10px;
     display: flex;
     align-items: center;
-    box-shadow: 0px 0px 10px 5px black inset;
+    box-shadow: inset 0 0 10px 5px black;
+    margin: 20px 0;
 }
-#conta{
+
+#conta {
     width: 90%;
     height: 100%;
     font-size: 30px;
     border: none;
-    margin: 10px;
     background: transparent;
     color: white;
-    cursor:initial;
-}
-.linha1{
-    display: flex;
-    margin: 20px;
-    width: 90%;
-    align-items: center;
-    justify-content: space-around;
-}
-.on{
-    margin: 20px;
-    border-radius: 50%;
-    background-color: var(--cor1);
-    padding: 10px;
-    cursor: pointer;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    box-shadow: 0px 10px 0px 0px var(--bx1);
-}
-.on:active{
-    animation: apertar 0.3s;
-}
-.on p{
     margin: 10px;
     cursor: initial;
 }
-@keyframes apertar{
-    0%{
+
+/* Botões Gerais */
+button, .on, .CE, .raiz, .porcentagem, .divisao, .multiplicacao, .subtracao, .soma, .resultado,
+.numero0, .numero1, .numero2, .numero3, .numero4, .numero5, .numero6, .numero7, .numero8, .numero9, .ponto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: 10%;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 0 0 var(--preto-inset);
+}
+
+button:active, .on:active, .CE:active, .raiz:active, .porcentagem:active,
+.divisao:active, .multiplicacao:active, .subtracao:active, .soma:active,
+.resultado:active, .numero0:active, .ponto:active, .numero1:active, .numero2:active, .numero3:active, .numero4:active, .numero5:active, .numero6:active, .numero7:active, .numero8:active, .numero9:active{
+    animation: apertar 0.3s;
+}
+
+@keyframes apertar {
+    0% {
         box-shadow: none;
         margin-top: 10px;
     }
 }
-.mrc{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-    width: 10%;
-}
-.mrc_title{
-    margin: 10px;
-}
-.mrc_botao{
-    background: var(--cor2);
-    width: 100%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    cursor: pointer;
-}
-.mrc_botao:active{
-    animation: apertar 0.3s;
-}
-#mrc{
-    width: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-.M-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-    width: 10%;
-}
-.m-_title{
-    margin: 10px;
-}
-.m-_botao{
-    background: var(--cor2);
-    width: 100%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    cursor: pointer;
-}
-.m-_botao:active{
-    animation: apertar 0.3s;
-}
-#m-{
-    width: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-.M{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-    width: 10%;
-}
-.m_title{
-    margin: 10px;
-    color: white;
-}
-.m_botao{
-    background: var(--cor2);
-    width: 100%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    cursor: pointer;
-}
-.m_botao:active{
-    animation: apertar 0.3s;
-}
-#m{
-    width: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-.linha2{
-    display: flex;
-    margin: 0px;
-    width: 90%;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-}
-.CE{
+
+.CE {
     margin: 0px;
     border-radius: 50%;
     background-color: var(--cor1);
     padding: 10px;
     cursor: pointer;
-    width: 10%;
+    width: 60px;
+    height: 60px; /* adiciona altura igual à largura */
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     box-shadow: 0px 10px 0px 0px var(--bx1);
 }
-.CE:active{
-    animation: apertar 0.3s;
-}
-.CE p{
-    margin: 10px;
+
+.CE p {
+    margin: 0;
     cursor: initial;
+    font-size: 18px;
 }
-.raiz{
-    background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
+
+.historico-container {
+    background-color: rgb(43, 43, 43);
+    border: 2px solid var(--cor1);
     border-radius: 10px;
-    cursor: pointer;
-}
-.raiz:active{
-    animation: apertar 0.3s;
-}
-.porcentagem{
-    background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    padding: 15px;
-    width: 10%;
+    padding: 10px 15px;
+    max-height: 50%;
+    overflow-y: auto;
+    font-family: sans-serif;
+    font-size: 24px;
+    margin: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
+    width: 30%;
+    flex-direction: column;
+    color: white;
+    box-shadow: 0px 0px 10px 5px var(--cor1);
 }
-.porcentagem:active{
-    animation: apertar 0.3s;
+
+.historico-container h3 {
+    margin-top: 0;
+    text-align: center;
 }
-.divisao{
-    background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);   
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.divisao:active{
-    animation: apertar 0.3s;
-}
-.linha3{
-    display: flex;
-    margin-top: 25px;
-    width: 90%;
-    align-items: center;
-    justify-content: space-around;
+
+#historico {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     color: white;
 }
-.numero7{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+#historico li {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid var(--cor1);
+}
+
+#limparHistorico{
+    width: 100%;
+    margin: 10% 0% 10% 0%;
     font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero7:active{
-    animation: apertar 0.3s;
-}
-.numero8{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero8:active{
-    animation: apertar 0.3s;
-}
-.numero9{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero9:active{
-    animation: apertar 0.3s;
-}
-.multiplicacao{
     background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    padding: 15px;
-    width: 10%;
+    box-shadow: 0 10px 0 0 var(--cor1);
+    border: none;
+
+}
+
+
+/* Cores Específicas */
+.on, .CE {
+    background-color: var(--cor1);
+    box-shadow: 0 10px 0 0 var(--bx1);
+    border-radius: 50%;
+}
+
+.raiz, .porcentagem, .divisao, .multiplicacao, .subtracao, .soma, .resultado {
+    background: var(--cor2);
+    box-shadow: 0 10px 0 0 var(--bx2);
+}
+
+.numero0, .numero1, .numero2, .numero3, .numero4, .numero5, .numero6, .numero7, .numero8, .numero9, .ponto {
+    background: var(--cinza);
+}
+
+/* Botões de memória */
+.mrc, .M-, .M {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.multiplicacao:active{
-    animation: apertar 0.3s;
-}
-.linha4{
-    display: flex;
-    margin-top: 25px;
-    width: 90%;
-    align-items: center;
-    justify-content: space-around;
     color: white;
-    flex-direction: row;
-}
-.numero4{
-    background: rgb(66, 66, 66);
-    padding: 15px;
     width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
 }
-.numero4:active{
-    animation: apertar 0.3s;
-}
-.numero5{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero5:active{
-    animation: apertar 0.3s;
-}
-.numero6{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero6:active{
-    animation: apertar 0.3s;
-}
-.subtracao{
+
+.mrc_botao, .m-_botao, .m_botao {
     background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    padding: 15px;
-    width: 10%;
+    width: 100%;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
+    box-shadow: 0 10px 0 0 var(--bx2);
     cursor: pointer;
 }
-.subtracao:active{
+
+.mrc_botao:active, .m-_botao:active, .m_botao:active {
     animation: apertar 0.3s;
 }
-.linha5{
-    display: flex;
-    margin-top: 25px;
-    width: 90%;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-}
-.numero1{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
+
+#mrc, #m-, #m {
+    width: 100%;
+    background: transparent;
+    border: none;
     cursor: pointer;
 }
-.numero1:active{
-    animation: apertar 0.3s;
-}
-.numero2{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero2:active{
-    animation: apertar 0.3s;
-}
-.numero3{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero3:active{
-    animation: apertar 0.3s;
-}
-.soma{
-    background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.soma:active{
-    animation: apertar 0.3s;
-}
-.linha6{
-    display: flex;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    width: 82%;
-    align-items: center;
-    justify-content: space-between;
-    color: white;
-}
-.numero0{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.numero0:active{
-    animation: apertar 0.3s;
-}
-.ponto{
-    background: rgb(66, 66, 66);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 0px 0px rgb(0, 0, 0);
-    cursor: pointer;
-}
-.ponto:active{
-    animation: apertar 0.3s;
-}
-.resultado{
-    background: var(--cor2);
-    box-shadow: 0px 10px 0px 0px var(--bx2);
-    padding: 15px;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.resultado:active{
-    animation: apertar 0.3s;
-}
+
 @media screen and (max-width: 800px) {
-    .calculadora{
+    .box1 {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .calculadora {
         width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .historico-container {
+        width: 90%;
+        font-size: 18px;
+        max-height: 200px;
+    }
+
+    button, .on, .CE, .raiz, .porcentagem, .divisao, .multiplicacao,
+    .subtracao, .soma, .resultado, .numero0, .numero1, .numero2, .numero3,
+    .numero4, .numero5, .numero6, .numero7, .numero8, .numero9, .ponto {
+        width: 18%;
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .mrc, .M-, .M {
+        width: 18%;
+    }
+
+    .numbox {
+        font-size: 20px;
+        height: auto;
+        min-height: 40px;
+    }
+
+    #limparHistorico {
+        font-size: 16px;
+        margin: 10px 0 0 0;
     }
 }
+
